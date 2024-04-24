@@ -11,8 +11,6 @@ export class AppApiService {
   constructor(  private readonly http: HttpClient  ) { }
 
   getTests(): Observable<string> {
-    const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
-    console.log(environment.apiUrl);
-    return this.http.get<string>(`${environment.apiUrl}}/test`, { headers: headers, responseType: 'text' })
+    return this.http.get(`${environment.apiUrl}/test`, { responseType: 'text' });
   }
 }

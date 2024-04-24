@@ -23,11 +23,24 @@ export class AppComponent implements OnInit {
 
   /* --------------------- P R I V A T E --------------------- */
 
-  private getTests(): void {
+  private getTests1(): void {
     this.testApi.getTests().subscribe(res => {
       this.apiText = res;
     }, (err) => {
       console.error('API Error: ', err);
     })
+  }
+
+  private getTests(): void {
+    this.testApi.getTests().subscribe(
+      {
+        next : (res) => {
+          this.apiText = res;
+        },
+        error: (err) => {
+          console.error('Api Error: ', err);
+        },
+        complete: () => console.log('Complete Called!')
+      });
   }
 }
