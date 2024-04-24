@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/app.js",
-    "dev": "nodemon src/server.ts --exec ts-node"
+    "start": "tsc && node dist/server.js",
+    "dev": "nodemon server.ts --exec ts-node"
   },
   "keywords": [],
   "author": "",
