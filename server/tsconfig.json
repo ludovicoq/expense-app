@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",              // Imposta il target ECMAScript per il quale TypeScript compilerà il codice
+    "module": "commonjs",         // Uso del sistema di moduli CommonJS, tipico in Node.js
+    "outDir": "./dist",           // Directory in cui verrà output il codice JavaScript compilato
+    "rootDir": "./app",           // Directory contenente i sorgenti TypeScript
+    "strict": false,               // Abilita tutte le opzioni di tipizzazione stretta
+    "esModuleInterop": true,      // Permette l'importazione di moduli ES6 in CommonJS
+    "skipLibCheck": true,         // Salta il controllo dei tipi per le definizioni di file delle librerie
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["app/**/*"],        // Specifica quali file includere nella compilazione
+  "exclude": ["node_modules"]     // Esclude la cartella node_modules dalla compilazione
+}
