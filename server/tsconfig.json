@@ -9,6 +9,6 @@
     "skipLibCheck": true,         // Salta il controllo dei tipi per le definizioni di file delle librerie
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["app/**/*"],        // Specifica quali file includere nella compilazione
+  "include": ["app/**/*", "server.ts"],        // Specifica quali file includere nella compilazione
   "exclude": ["node_modules"]     // Esclude la cartella node_modules dalla compilazione
 }
