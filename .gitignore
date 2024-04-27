@@ -12,10 +12,10 @@ npm-debug.log
 yarn-error.log
 
 #server
-server/node_modules
-server/npm-debug.log
-server/yarn-error.log
-server/dist
+/server/node_modules
+/server/npm-debug.log
+/server/yarn-error.log
+/server/dist
 
 
 # IDEs and editors
