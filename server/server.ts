@@ -3,6 +3,7 @@ import cors from "cors"
 import path from "path"
 import http from "http"
 import router from "./app/routes/app-routes"
+import { DatabaseEngine } from "./app/core/services/db-service";
 
 const app: Express = express();
 const port: number = 3001;
@@ -18,3 +19,5 @@ app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '../dist/expense-a
 
 const server = http.createServer(app);
 server.listen(port, () => console.log(`App running on: http://localhost:${port}`));
+
+const database = new DatabaseEngine();
