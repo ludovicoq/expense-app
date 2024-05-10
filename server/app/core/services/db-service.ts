@@ -1,22 +1,24 @@
-import mysql from "mysql2"
-export class DatabaseEngine {
-    constructor() {
-        var connection = mysql.createConnection({
-            host: "localhost",
-            user: "ludo",
-            password: "Ludo.Admin01",
-        });
-        connection.connect(function(err) {
-            if (err) throw err;
-            console.log("Connected!");
-          });
+import mysql, { Pool, PoolConnection, PoolOptions } from "mysql2/promise";
+import { AppConfiguration } from "../models/config";
 
-          connection.query(
-            'SELECT user FROM mysql.user;',
-            function (err, results, fields) {
-              console.log(results); // results contains rows returned by server
-              console.log(fields); // fields contains extra meta data about results, if available
-            }
-          );
-    }
+export class DatabaseService {
+  private pool: Pool;
+  private config: PoolOptions;
+  constructor() {
+    this.config = AppConfiguration.Configuration;
+    this.pool = mysql.createPool({
+      host: this.config.host,
+      user: this.config.user,
+      password: this.config.password,
+      database: this.config.database,
+      waitForConnections: true,
+      connectionLimit: 10,
+      queueLimit: 0
+    });
+  }
+
+  public async getConnection(): Promise<PoolConnection> {
+    return this.pool.getConnection();
+  }
 }
+

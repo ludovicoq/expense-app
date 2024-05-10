@@ -16,6 +16,7 @@ yarn-error.log
 /server/npm-debug.log
 /server/yarn-error.log
 /server/dist
+/server/.env
 
 
 # IDEs and editors
