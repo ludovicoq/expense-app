@@ -9,6 +9,7 @@ import router from "./app/routes/app-routes"
 import { DatabaseService } from "./app/core/services/db-service";
 import { AppConfiguration } from './app/core/models/config';
 import { UserService } from './app/core/services/user-service';
+import { User } from './app/core/models/user';
 
 const app: Express = express();
 const port: number = 3001;
@@ -22,6 +23,27 @@ app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '../dist/expense-a
 const server = http.createServer(app);
 server.listen(port, () => console.log(`App running on: http://localhost:${port}`));
 var userService = new UserService();
-var users = userService.getUsersById(1).then((res) => {
-  console.log(res);
+var users = userService.getUserById(1).then((res) => {
+  //console.log(res);
 });
+var user = {
+  //userId: 1,
+  surname: 'Changed',
+  name: 'Ludo',
+  email: 'changed@dev.com',
+  password: 'pass',
+  userRef: 'reference',
+  username: 'usernameLudo',
+  dateCreate: new Date(),
+  dateChange: new Date()
+} as User;
+// var setUser = userService.setUser(user).then((res) => {
+//   console.log(res);
+// });
+userService.addUser(user).then((res) => {
+  user = res;
+  var deletedUser = userService.deleteUserById(user.userId).then((res) => {
+    console.log('Deleted: ', res);
+  });
+});
+

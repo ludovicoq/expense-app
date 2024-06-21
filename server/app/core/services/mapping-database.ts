@@ -9,6 +9,9 @@ export class DatabaseMapping {
   }
 
   public static mapUser(rowData?: RowDataPacket): User {
+    if (!rowData) {
+      return undefined;
+    }
     return {
       userId: rowData?.user_id,
       name: rowData?.name,
